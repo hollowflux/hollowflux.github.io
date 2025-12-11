@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vaaren Nawagekar – e-Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2933;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.96),
+        rgba(15, 23, 42, 0.85),
+        transparent
+      );
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.6rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .nav-name {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-tag {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--accent-soft);
+      background: rgba(15, 23, 42, 0.8);
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    .hero {
+      padding: 2.2rem 1.2rem 2.5rem;
+      border-radius: 1.75rem;
+      background: radial-gradient(circle at top left, #1d283a, #020617 60%);
+      border: 1px solid var(--border-subtle);
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 2.25rem;
+      align-items: center;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.9rem, 2.6vw + 1rem, 2.6rem);
+    }
+
+    .hero-role {
+      font-size: 1rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero p {
+      margin: 0.3rem 0;
+      color: var(--text-muted);
+      max-width: 36rem;
+    }
+
+    .hero-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.7rem;
+    }
+
+    .hero-meta span {
+      display: inline-block;
+      margin-right: 0.8rem;
+    }
+
+    .hero-actions {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b1120;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.45);
+    }
+
+    .btn-outline {
+      border-color: var(--border-subtle);
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-soft);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-badge {
+      border-radius: 1.25rem;
+      padding: 1.35rem 1.4rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+    }
+
+    .hero-badge h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.05rem;
+    }
+
+    .hero-badge ul {
+      padding-left: 1.1rem;
+      margin: 0.1rem 0;
+      color: var(--text-muted);
+    }
+
+    section {
+      margin-bottom: 2.25rem;
+    }
+
+    .section-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 1.5rem;
+      border: 1px solid var(--border-subtle);
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .section-tag {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    h3 {
+      margin-top: 1.1rem;
+      margin-bottom: 0.35rem;
+      font-size: 1rem;
+    }
+
+    p {
+      margin-top: 0.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    ul {
+      margin: 0.15rem 0 0.65rem;
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.2rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.8rem;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-muted);
+    }
+
+    .link-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      background: rgba(15, 23, 42, 0.7);
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+
+    .link-chip span {
+      font-size: 0.85rem;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      margin-top: 0.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.35rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 1.6rem 1.3rem 1.8rem;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="nav-name">Vaaren Nawagekar</div>
+        <div class="nav-tag">MS Artificial Intelligence · Northeastern University</div>
+      </div>
+      <nav class="nav-links">
+        <a href="#intro">Intro</a>
+        <a href="#resume">Résumé</a>
+        <a href="#tmay">Tell Me About Yourself</a>
+        <a href="#job-search">Job Search Plan</a>
+        <a href="#why">“Why” Statement</a>
+        <a href="#accomplishments">Accomplishment Stories</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="intro">
+      <div>
+        <div class="hero-role">AI · FULL-STACK · ROBOTICS</div>
+        <h1>e-Portfolio for Co-op & Career Preparation</h1>
+        <p>
+          I’m <strong>Vaaren Nawagekar</strong>, a Master’s student in Artificial Intelligence at
+          Northeastern University with a background in Robotics, Machine Learning, and Full-Stack
+          Development. This e-portfolio showcases my professional brand and readiness for Co-op.
+        </p>
+        <p class="hero-meta">
+          <span>📍 Portland, ME</span>
+          <span>🎓 MS in AI – Northeastern University</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#resume">View Résumé</a>
+          <a class="btn btn-outline" href="#job-search">Job Search Strategy</a>
+        </div>
+      </div>
+      <aside class="hero-badge">
+        <h2>Assignment Requirements Covered</h2>
+        <ul>
+          <li>Module 4 – Professional Introduction (Video)</li>
+          <li>Module 7 – Professional Résumé</li>
+          <li>Module 8 – Tell Me About Yourself (Video)</li>
+          <li>Module 9 – Job Search Strategy Plan</li>
+          <li>Module A – “Why” Statement</li>
+          <li>Module B – Accomplishment Stories</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- MODULE 4: Professional Introduction -->
+    <section id="professional-intro">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">Professional Introduction</div>
+          <div class="section-tag">Module 4</div>
+        </div>
+
+        <p><strong>Video Link:</strong></p>
+        <p>
+          <!-- TODO: Replace YOUR_PROFESSIONAL_INTRO_VIDEO_LINK with your actual link -->
+          <span class="link-chip">
+            <span>🎥</span>
+            <a href="YOUR_PROFESSIONAL_INTRO_VIDEO_LINK" target="_blank" rel="noopener noreferrer">
+              Watch my Professional Introduction video
+            </a>
+          </span>
+        </p>
+
+        <h3>Elevator Pitch</h3>
+        <p>
+          Hi, I’m Vaaren. I’m a Master’s student in Artificial Intelligence at Northeastern University
+          with a background in Robotics, Machine Learning, and Full-Stack Engineering. I love building
+          systems—from AI-driven applications to scalable web platforms—that solve real problems.
+        </p>
+        <p>
+          I’ve worked on projects such as UAV landing stabilization using a Stewart Platform, an AI-powered
+          Android companion app, and the architecture for an EdTech platform serving multiple user personas.
+          I’m passionate about combining engineering, creativity, and AI to build high-impact technology.
+        </p>
+      </div>
+    </section>
+
+    <!-- MODULE 7: Professional Resume -->
+    <section id="resume">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">Professional Résumé</div>
+          <div class="section-tag">Module 7</div>
+        </div>
+
+        <p>
+          Below is a link to my current professional résumé, tailored for AI, software engineering, and
+          Co-op roles.
+        </p>
+
+        <p>
+          <!-- TODO: Replace YOUR_RESUME_PDF_LINK with your actual résumé URL -->
+          <span class="link-chip">
+            <span>📄</span>
+            <a href="YOUR_RESUME_PDF_LINK" target="_blank" rel="noopener noreferrer">
+              View / Download my Résumé (PDF)
+            </a>
+          </span>
+        </p>
+
+        <h3>Snapshot</h3>
+        <ul>
+          <li>MS in Artificial Intelligence, Northeastern University (Roux Institute)</li>
+          <li>B.Tech in Robotics & Automation with minors in AI & ML</li>
+          <li>Experience in AI/ML, Full-Stack Web Development, and Mobile Development</li>
+        </ul>
+
+        <div class="pill-list">
+          <div class="pill">Python</div>
+          <div class="pill">React & Node.js</div>
+          <div class="pill">Kotlin / Jetpack Compose</div>
+          <div class="pill">PyTorch & TensorFlow</div>
+          <div class="pill">AWS & Cloud Basics</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 8: Tell Me About Yourself -->
+    <section id="tmay">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">“Tell Me About Yourself”</div>
+          <div class="section-tag">Module 8</div>
+        </div>
+
+        <p><strong>Video Link:</strong></p>
+        <p>
+          <!-- TODO: Replace YOUR_TMAY_VIDEO_LINK with your “Tell Me About Yourself” video link -->
+          <span class="link-chip">
+            <span>🎥</span>
+            <a href="YOUR_TMAY_VIDEO_LINK" target="_blank" rel="noopener noreferrer">
+              Watch my “Tell Me About Yourself” video
+            </a>
+          </span>
+        </p>
+
+        <h3>Summary</h3>
+        <p>
+          I’m Vaaren, currently pursuing my MSAI at Northeastern University. I come from a background in
+          Robotics and AI, where I’ve worked on projects involving machine learning, UAV stability control,
+          and full-stack platforms.
+        </p>
+        <p>
+          Over time, I’ve realized I’m most energized when I’m building—whether it’s apps, intelligent models,
+          or complete systems. I’m now aiming for roles where I can contribute to AI engineering, full-stack
+          development, or applied machine learning while continuing to grow in research and real-world technical
+          problem solving.
+        </p>
+      </div>
+    </section>
+
+    <!-- MODULE 9: Job Search Strategy Plan -->
+    <section id="job-search">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">Job Search Strategy Plan</div>
+          <div class="section-tag">Module 9</div>
+        </div>
+
+        <p>
+          This plan outlines my SMART goals, target companies, skills, and concrete next steps in my job search and Co-op preparation.
+        </p>
+
+        <p>
+          <!-- TODO: Replace YOUR_JOB_SEARCH_PLAN_PDF_LINK with your Job Search Strategy Plan PDF link -->
+          <span class="link-chip">
+            <span>📄</span>
+            <a href="YOUR_JOB_SEARCH_PLAN_PDF_LINK" target="_blank" rel="noopener noreferrer">
+              View / Download my Job Search Strategy Plan (PDF)
+            </a>
+          </span>
+        </p>
+
+        <h3>SMART Career Goals</h3>
+        <ul>
+          <li>Secure a Research or Teaching Assistantship (RA/TA) by Fall 2026.</li>
+          <li>Land a Summer 2026 internship in AI/ML or Full-Stack Engineering.</li>
+          <li>Obtain a Co-op after Semester 2 (Jan–July 2027).</li>
+          <li>Achieve a full-time AI/Software Engineering role at a top MNC after graduation.</li>
+        </ul>
+
+        <h3>Target Companies</h3>
+        <p>Google DeepMind, OpenAI, Microsoft, JPMorgan AI Research, Nvidia, Amazon, Tesla/SpaceX, Anthropic.</p>
+
+        <h3>Immediate To-Do Items</h3>
+        <ul>
+          <li>Finalize résumé and portfolio by January 15, 2026.</li>
+          <li>Complete major AI/Full-Stack projects by February 10, 2026.</li>
+          <li>Begin internship applications by January 20, 2026.</li>
+          <li>Complete key certifications by March 1, 2026.</li>
+          <li>Hold weekly mock interviews starting January 10, 2026.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- MODULE A: "Why" Statement -->
+    <section id="why">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">“Why” Statement</div>
+          <div class="section-tag">Module A</div>
+        </div>
+
+        <p>
+          My purpose in pursuing technology is driven by a deep curiosity for how systems work and a passion
+          for solving complex problems. Technology allows me to build, innovate, and create solutions that
+          scale to many people.
+        </p>
+        <p>
+          Through my experience in robotics, AI, software engineering, and research, I’ve realized that
+          meaningful impact happens when creativity and engineering come together. I want to build tools and
+          intelligent systems that elevate human capability and contribute to real-world progress.
+        </p>
+        <p>
+          Ultimately, I’m pursuing this path because I want a career that reflects my values: growth,
+          contribution, curiosity, resilience, and impact. Technology gives me the foundation, the
+          opportunity, and the platform to do exactly that.
+        </p>
+      </div>
+    </section>
+
+    <!-- MODULE B: Accomplishment Stories -->
+    <section id="accomplishments">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">Accomplishment Stories</div>
+          <div class="section-tag">Module B</div>
+        </div>
+
+        <h3>1. Leading Technical Architecture for an EdTech Platform (CollegeZee)</h3>
+        <p><strong>Situation:</strong> As an intern at Convergent Software Solutions, I worked on CollegeZee, a multi-persona EdTech CRM and admissions platform.</p>
+        <p><strong>Task:</strong> I was responsible for helping define the technical architecture, data flows, and service boundaries so that the engineering team could implement a scalable solution.</p>
+        <p><strong>Action:</strong></p>
+        <ul>
+          <li>Created architecture diagrams outlining microservices, API gateway, and authentication flows.</li>
+          <li>Designed ERDs for student onboarding, counselor workflows, and vendor modules.</li>
+          <li>Contributed detailed technical responses for an RFP, translating business needs into technical components.</li>
+        </ul>
+        <p><strong>Result:</strong> The work provided a clear blueprint for development, reduced rework, and was positively recognized by leadership as a strong technical foundation for the product.</p>
+
+        <h3>2. UAV Landing Stability Using a 6-DOF Stewart Platform</h3>
+        <p><strong>Situation:</strong> For my undergraduate capstone, I researched improving UAV landing stability using a servo-driven 6-DOF Stewart Platform.</p>
+        <p><strong>Task:</strong> I needed to design and implement a physical stabilization system to compensate for disturbances during landing.</p>
+        <p><strong>Action:</strong></p>
+        <ul>
+          <li>Designed the mechanical platform and selected servos and sensors.</li>
+          <li>Implemented control algorithms using IMU feedback and real-time adjustments.</li>
+          <li>Conducted experiments and tuned PID parameters for smoother landings.</li>
+        </ul>
+        <p><strong>Result:</strong> The system demonstrated noticeably smoother UAV landings and received strong positive feedback from faculty for innovation and execution.</p>
+
+        <h3>3. Full-Stack & Mobile AI Projects</h3>
+        <p><strong>Situation:</strong> Across internships and coursework, I built multiple full-stack and mobile applications and integrated AI models into real demos.</p>
+        <p><strong>Task:</strong> Deliver complete, well-designed applications within academic and project deadlines.</p>
+        <p><strong>Action:</strong></p>
+        <ul>
+          <li>Developed an AI Companion Android app using Kotlin and Jetpack Compose.</li>
+          <li>Built a real-time traffic sign recognition tool using YOLOv8 and Streamlit.</li>
+          <li>Implemented REST APIs and frontends using React, Node.js, and MongoDB.</li>
+        </ul>
+        <p><strong>Result:</strong> Successfully delivered projects with full functionality and documentation, strengthening my technical versatility and ability to learn fast and execute.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- CONTACT -->
+  <footer id="contact">
+    <h3>Contact & Links</h3>
+    <p>If you’d like to learn more about my work or discuss opportunities, feel free to reach out.</p>
+    <div class="contact-links">
+      <!-- TODO: Replace with your real contact details -->
+      <span>📧 Email: <a href="mailto:YOUR_NU_EMAIL_HERE">YOUR_NU_EMAIL_HERE</a></span>
+      <span>🔗 LinkedIn: <a href="YOUR_LINKEDIN_URL_HERE" target="_blank" rel="noopener noreferrer">View my LinkedIn</a></span>
+      <span>💻 GitHub: <a href="YOUR_GITHUB_URL_HERE" target="_blank" rel="noopener noreferrer">View my GitHub</a></span>
+    </div>
+    <p style="margin-top: 0.8rem;">
+      This e-portfolio was created to fulfill the Northeastern University Co-op Career Preparation requirements.
+    </p>
+  </footer>
+</body>
+</html>
